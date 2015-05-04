@@ -15,19 +15,25 @@ namespace AwesomeGallery
     {
         private ImageList selectedImages;
         private List<byte[]> pictures;
+        protected Graphics myGraphics;
+
         public MainView()
         {
             InitializeComponent();
             selectedImages = new ImageList();
             pictures = new List<byte[]>();
+            myGraphics = Graphics.FromHwnd(panel1.Handle);
         }
+
+
 
         //Menu Open
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Multiselect = true;
-            openFileDialog1.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+
+            openFileDialog1.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             if (openFileDialog1.ShowDialog().ToString().Equals("OK"))
             {
                 String[] files = openFileDialog1.FileNames;
