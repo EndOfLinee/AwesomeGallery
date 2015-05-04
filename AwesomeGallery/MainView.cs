@@ -14,11 +14,12 @@ namespace AwesomeGallery
     public partial class MainView : Form
     {
         private ImageList selectedImages;
-        private byte[] image;
+        private List<byte[]> pictures;
         public MainView()
         {
             InitializeComponent();
             selectedImages = new ImageList();
+            pictures = new List<byte[]>();
         }
 
         //Menu Open
@@ -32,17 +33,26 @@ namespace AwesomeGallery
                 String[] files = openFileDialog1.FileNames;
                 for (int i = 0; i < files.Length; i++)
                 {
-                    selectedImages.Images.Add(openFileDialog1.SafeFileNames[i], Image.FromFile(files[i]));
+                    pictures.Add(File.ReadAllBytes(files[0]));
+                    using (var ms = new MemoryStream(pictures[i]))
+                    {
+                        selectedImages.Images.Add(openFileDialog1.SafeFileNames[i], Image.FromStream(ms));
+                    }
                 }
-                image = File.ReadAllBytes(files[0]);
-                Image myImage;
-                using (var ms = new MemoryStream(image))
+                using (var ms = new MemoryStream(pictures.ElementAt(0)))
                 {
-                    myImage = Image.FromStream(ms);
+                    pictureBox1.Image = Image.FromStream(ms);
                 }
+                selectedImages.ImageSize = new Size(100, 100);
                 listView1.LargeImageList = selectedImages;
-                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-                pictureBox1.Image = myImage;
+                List<string> names = new List<string>() { "1", "2" };
+                int count = 0;
+                foreach (string s in names)
+                {
+                    ListViewItem lst = new ListViewItem();
+                    lst.ImageIndex = count++;
+                    listView1.Items.Add(lst);
+                }
             }
         }
 
@@ -51,5 +61,19 @@ namespace AwesomeGallery
         {
             Close();
         }
+
+        //ListView item select
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainView_Load(object sender, EventArgs e)
+        {
+
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+
     }
 }
