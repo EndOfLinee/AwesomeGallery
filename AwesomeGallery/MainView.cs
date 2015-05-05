@@ -133,9 +133,13 @@ namespace AwesomeGallery
 
         private void clearSelectedItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            listView1.Items[selectedItemIndex].Remove();
-            selectedImages.Images[selectedItemIndex].Dispose();
-            pictureBox1.Image = null;
+            if (listView1.Items.Count != 0)
+            {
+                listView1.Items[selectedItemIndex].Remove();
+                selectedImages.Images[selectedItemIndex].Dispose();
+                pictureBox1.Image = null;
+            }
+
         }
 
        
