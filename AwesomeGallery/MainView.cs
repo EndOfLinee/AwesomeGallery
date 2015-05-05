@@ -60,13 +60,8 @@ namespace AwesomeGallery
 
                     pictureBox1.Image = Image.FromFile(files[0]);
                     
-                    
-                    
+                 
                 }
-
-
-
-
 
                 //for (int i = 0; i < files.Length; i++)
                 //{
@@ -124,8 +119,11 @@ namespace AwesomeGallery
         private void MainView_Load(object sender, EventArgs e)
         {
 
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+           pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+           listView1.View = View.List;
         }
+
+    
 
 
     }
