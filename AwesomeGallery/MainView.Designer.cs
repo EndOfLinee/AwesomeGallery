@@ -103,10 +103,10 @@
             // 
             this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.listView1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.listView1.BackColor = System.Drawing.SystemColors.Window;
             this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView1.Location = new System.Drawing.Point(0, 20);
-            this.listView1.Margin = new System.Windows.Forms.Padding(0, 20, 0, 0);
+            this.listView1.Location = new System.Drawing.Point(10, 20);
+            this.listView1.Margin = new System.Windows.Forms.Padding(10, 20, 0, 0);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(150, 363);
             this.listView1.TabIndex = 2;
@@ -117,7 +117,7 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(153, 3);
+            this.panel1.Location = new System.Drawing.Point(163, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(517, 377);
             this.panel1.TabIndex = 3;
