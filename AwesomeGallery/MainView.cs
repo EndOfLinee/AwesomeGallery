@@ -27,7 +27,8 @@ namespace AwesomeGallery
             listView1.MultiSelect = false;
         }
         public String[] files;
-
+        public List<string> allFiles = new List<string>();
+        
 
         //Menu Open
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -38,6 +39,17 @@ namespace AwesomeGallery
 
             if (openFileDialog1.ShowDialog().ToString().Equals("OK"))
             {
+                //if (listView1.Items.Count != 0)
+                //{
+                //    DialogResult result = MessageBox.Show("Clear gallery?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                //    if ( result == DialogResult.Yes)
+                //    {
+                //        selectedImages.Dispose();
+                //        selectedImages = new ImageList();
+                //        listView1.Clear();
+                //    }
+                //}
+                
                 files = openFileDialog1.FileNames;
                
                 if (files.Count() != 0)
@@ -53,12 +65,14 @@ namespace AwesomeGallery
                         listView1.BeginUpdate();
                         listView1.Items.Add(item); 
                         listView1.EndUpdate();
+
+                        allFiles.Add(files[i]);
                     }
                     this.listView1.View = View.LargeIcon;
                     this.selectedImages.ImageSize = new Size(50, 50);
                     this.listView1.LargeImageList = this.selectedImages;
 
-                      pictureBox1.Image = Image.FromFile(files[0]);
+                    pictureBox1.Image = Image.FromFile(files[0]);
                     
                  
                 }
@@ -99,21 +113,15 @@ namespace AwesomeGallery
         //ListView item select
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            
             int a = 0;
-            try
+            for (int i = 0; i < listView1.Items.Count; i++)
             {
-                a = listView1.SelectedIndices[0];
+                if (listView1.Items[i].Selected)
+                {
+                    a = i;
+                }
             }
-            catch
-            {
-
-            }
-            finally
-            {
-                pictureBox1.Image = Image.FromFile(files[a]);
-            }
+            pictureBox1.Image = Image.FromFile(allFiles[a]);
         }
 
         private void MainView_Load(object sender, EventArgs e)
