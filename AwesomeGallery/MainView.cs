@@ -24,6 +24,7 @@ namespace AwesomeGallery
             selectedImages1 = new ImageList();
             
             pictures = new List<byte[]>();
+            listView1.MultiSelect = false;
         }
         public String[] files;
 
