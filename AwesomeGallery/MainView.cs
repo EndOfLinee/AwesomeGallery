@@ -124,6 +124,23 @@ namespace AwesomeGallery
          
         }
 
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+
+            if (pictureBox1.Image != null)
+            {
+                if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.Length > 0)
+                {
+                    pictureBox1.Image.Save(sfd.FileName);
+                }
+            }
+        }
+
+       
+
+
     
 
 
