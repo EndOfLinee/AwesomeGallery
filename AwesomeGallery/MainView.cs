@@ -14,21 +14,24 @@ namespace AwesomeGallery
     public partial class MainView : Form
     {
         private ImageList selectedImages;
-        private ImageList selectedImages1;
-        private List<byte[]> pictures;
 
         public MainView()
         {
             InitializeComponent();
-            selectedImages = new ImageList();
-            selectedImages1 = new ImageList();
-            
-            pictures = new List<byte[]>();
+            selectedImages = new ImageList();            
             listView1.MultiSelect = false;
         }
+
+        private void MainView_Load(object sender, EventArgs e)
+        {
+
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            listView1.View = View.List;
+
+        }
+
         public String[] files;
-        public List<string> allFiles = new List<string>();
-        
+        public int globalImageIndex = 0;
 
         //Menu Open
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -39,68 +42,51 @@ namespace AwesomeGallery
 
             if (openFileDialog1.ShowDialog().ToString().Equals("OK"))
             {
-                //if (listView1.Items.Count != 0)
-                //{
-                //    DialogResult result = MessageBox.Show("Clear gallery?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                //    if ( result == DialogResult.Yes)
-                //    {
-                //        selectedImages.Dispose();
-                //        selectedImages = new ImageList();
-                //        listView1.Clear();
-                //    }
-                //}
-                
+                if (listView1.Items.Count != 0)
+                {
+                    DialogResult result = MessageBox.Show("Clear gallery?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        clearGallery();
+                    }
+                    else
+                    {
+                        pictureBox1.Image = null;
+                        listView1.Items[selectedItemIndex].Selected = false;
+                    }
+                }
+
                 files = openFileDialog1.FileNames;
-               
+
+                listView1.View = View.LargeIcon;
+                selectedImages.ImageSize = new Size(50, 50);
+                listView1.LargeImageList = this.selectedImages;
+
                 if (files.Count() != 0)
                 {
                     for (int i = 0; i < files.Count(); i++)
                     {
                         
                         ListViewItem item = new ListViewItem();
-                        item.ImageIndex = i;
+                        item.ImageIndex = globalImageIndex;
+                        globalImageIndex++;
+                        item.Tag = files[i];
                         item.Text = Path.GetFileNameWithoutExtension(files[i]);
 
                         selectedImages.Images.Add(Image.FromFile(files[i]));
+
                         listView1.BeginUpdate();
                         listView1.Items.Add(item); 
                         listView1.EndUpdate();
 
-                        allFiles.Add(files[i]);
-                    }
-                    this.listView1.View = View.LargeIcon;
-                    this.selectedImages.ImageSize = new Size(50, 50);
-                    this.listView1.LargeImageList = this.selectedImages;
-
-                    pictureBox1.Image = Image.FromFile(files[0]);
-                    
-                 
+                    }                
                 }
+                pictureBox1.Image = null;
+                if (listView1.Items.Count != 0)
+                {
+                    listView1.Items[selectedItemIndex].Selected = false;
 
-                //for (int i = 0; i < files.Length; i++)
-                //{
-                //    pictures.Add(File.ReadAllBytes(files[0]));
-                //    using (var ms = new MemoryStream(pictures[i]))
-                //    {
-                //        selectedImages.Images.Add(openFileDialog1.SafeFileNames[i], Image.FromStream(ms));
-                //    }
-                //}
-
-                //using (var ms = new MemoryStream(pictures.ElementAt(0)))
-                //{
-                //    pictureBox1.Image = Image.FromStream(ms);
-                //}
-
-                //selectedImages.ImageSize = new Size(50, 50);
-                //listView1.LargeImageList = selectedImages;
-                //List<string> names = new List<string>() { "1", "2" };
-                //int count = 0;
-                //foreach (string s in names)
-                //{
-                //    ListViewItem lst = new ListViewItem();
-                //    lst.ImageIndex = count++;
-                //    listView1.Items.Add(lst);
-                //}
+                }
             }
         }
 
@@ -110,26 +96,46 @@ namespace AwesomeGallery
             Close();
         }
 
+        int selectedItemIndex = 0;
         //ListView item select
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int a = 0;
             for (int i = 0; i < listView1.Items.Count; i++)
             {
                 if (listView1.Items[i].Selected)
                 {
-                    a = i;
+                    selectedItemIndex = i;
                 }
             }
-            pictureBox1.Image = Image.FromFile(allFiles[a]);
+            pictureBox1.Image = Image.FromFile(listView1.Items[selectedItemIndex].Tag.ToString());
+           
         }
 
-        private void MainView_Load(object sender, EventArgs e)
-        {
+      
 
-           pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-           listView1.View = View.List;
-         
+        public void clearGallery()
+        {
+            selectedImages.Dispose();
+            selectedImages = new ImageList();
+
+            listView1.Clear();
+            listView1.Refresh();
+
+            pictureBox1.Image = null;
+            globalImageIndex = 0;
+        }
+
+        //Clear ALL 
+        private void clearAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clearGallery();
+        }
+
+        private void clearSelectedItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listView1.Items[selectedItemIndex].Remove();
+            selectedImages.Images[selectedItemIndex].Dispose();
+            pictureBox1.Image = null;
         }
 
     
