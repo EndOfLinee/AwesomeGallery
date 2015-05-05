@@ -58,7 +58,7 @@ namespace AwesomeGallery
                     this.selectedImages.ImageSize = new Size(50, 50);
                     this.listView1.LargeImageList = this.selectedImages;
 
-                    pictureBox1.Image = Image.FromFile(files[0]);
+                      pictureBox1.Image = Image.FromFile(files[0]);
                     
                  
                 }
@@ -121,6 +121,7 @@ namespace AwesomeGallery
 
            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
            listView1.View = View.List;
+         
         }
 
     
