@@ -14,50 +14,80 @@ namespace AwesomeGallery
     public partial class MainView : Form
     {
         private ImageList selectedImages;
-        private List<byte[]> pictures;
-        protected Graphics myGraphics;
 
         public MainView()
         {
             InitializeComponent();
             selectedImages = new ImageList();
-            pictures = new List<byte[]>();
-            myGraphics = Graphics.FromHwnd(panel1.Handle);
+            listView1.MultiSelect = false;
         }
 
+        private void MainView_Load(object sender, EventArgs e)
+        {
 
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            listView1.View = View.List;
+
+        
+
+        }
+
+        public String[] files;
+        public int globalImageIndex = 0;
 
         //Menu Open
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Multiselect = true;
-
             openFileDialog1.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+
             if (openFileDialog1.ShowDialog().ToString().Equals("OK"))
             {
-                String[] files = openFileDialog1.FileNames;
-                for (int i = 0; i < files.Length; i++)
+                if (listView1.Items.Count != 0)
                 {
-                    pictures.Add(File.ReadAllBytes(files[0]));
-                    using (var ms = new MemoryStream(pictures[i]))
+                    DialogResult result = MessageBox.Show("Clear gallery?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
                     {
-                        selectedImages.Images.Add(openFileDialog1.SafeFileNames[i], Image.FromStream(ms));
+                        clearGallery();
                     }
+                    else
+                    {
+                        pictureBox1.Image = null;
+                        listView1.Items[selectedItemIndex].Selected = false;
                 }
-                using (var ms = new MemoryStream(pictures.ElementAt(0)))
-                {
-                    pictureBox1.Image = Image.FromStream(ms);
                 }
-                selectedImages.ImageSize = new Size(100, 100);
-                listView1.LargeImageList = selectedImages;
-                List<string> names = new List<string>() { "1", "2" };
-                int count = 0;
-                foreach (string s in names)
+
+                files = openFileDialog1.FileNames;
+
+                listView1.View = View.LargeIcon;
+                selectedImages.ImageSize = new Size(50, 50);
+                listView1.LargeImageList = this.selectedImages;
+
+                if (files.Count() != 0)
                 {
-                    ListViewItem lst = new ListViewItem();
-                    lst.ImageIndex = count++;
-                    listView1.Items.Add(lst);
+                    for (int i = 0; i < files.Count(); i++)
+                    {
+                        
+                        ListViewItem item = new ListViewItem();
+                        item.ImageIndex = globalImageIndex;
+                        globalImageIndex++;
+                        item.Tag = files[i];
+                        item.Text = Path.GetFileNameWithoutExtension(files[i]);
+
+                        selectedImages.Images.Add(Image.FromFile(files[i]));
+
+                        listView1.BeginUpdate();
+                        listView1.Items.Add(item); 
+                        listView1.EndUpdate();
+
+                }
+                }
+                pictureBox1.Image = null;
+                if (listView1.Items.Count != 0)
+                {
+                    listView1.Items[selectedItemIndex].Selected = false;
+
                 }
             }
         }
@@ -68,17 +98,83 @@ namespace AwesomeGallery
             Close();
         }
 
+        int selectedItemIndex = 0;
         //ListView item select
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                if (listView1.Items[i].Selected)
+                {
+                    selectedItemIndex = i;
+                }
+            }
+            pictureBox1.Image = Image.FromFile(listView1.Items[selectedItemIndex].Tag.ToString());
+           
         }
 
-        private void MainView_Load(object sender, EventArgs e)
+      
+
+        public void clearGallery()
         {
+            selectedImages.Dispose();
+            selectedImages = new ImageList();
 
-            pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
+            listView1.Clear();
+            listView1.Refresh();
+
+            pictureBox1.Image = null;
+            globalImageIndex = 0;
         }
+
+        //Clear ALL 
+        private void clearAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clearGallery();
+        }
+
+        private void clearSelectedItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.Items.Count != 0)
+            {
+                listView1.Items[selectedItemIndex].Remove();
+                selectedImages.Images[selectedItemIndex].Dispose();
+                pictureBox1.Image = null;
+            }
+
+        }
+
+       
+        private void saveAsToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+
+            if (pictureBox1.Image != null)
+            {
+                if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.Length > 0)
+                {
+                    pictureBox1.Image.Save(sfd.FileName);
+                }
+            }
+        }
+
+        private void backgroundThemeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == DialogResult.OK)
+        {
+                listView1.BackColor = cd.Color;
+                panel1.BackColor = cd.Color;
+                tableLayoutPanel1.BackColor = cd.Color;
+
+            }
+        }
+
+
+
+
+    
 
 
     }
