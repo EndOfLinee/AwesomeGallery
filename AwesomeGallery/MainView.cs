@@ -28,6 +28,8 @@ namespace AwesomeGallery
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             listView1.View = View.List;
 
+        
+
         }
 
         public String[] files;
@@ -154,6 +156,18 @@ namespace AwesomeGallery
                 {
                     pictureBox1.Image.Save(sfd.FileName);
                 }
+            }
+        }
+
+        private void backgroundThemeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == DialogResult.OK)
+            {
+                listView1.BackColor = cd.Color;
+                panel1.BackColor = cd.Color;
+                tableLayoutPanel1.BackColor = cd.Color;
+               
             }
         }
 
