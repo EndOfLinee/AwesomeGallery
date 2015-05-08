@@ -10,7 +10,7 @@ namespace AwesomeGallery
 {
     class AwesomePictureBox : PictureBox
     {
-
+        private double zoom = 1.0;
         public AwesomePictureBox()
         {
         }
@@ -20,13 +20,25 @@ namespace AwesomeGallery
             Console.WriteLine("TEst");
         }
 
+
+        public void zoomIn()
+        {
+            zoom *= 2 ;
+        }
+
+        public void zoomOut()
+        {
+            zoom /= 2;
+        }
+
+
         protected override void OnPaint(PaintEventArgs pe)
         {
-            if (this.Image!=null)
+            if (this.Image != null)
             {
-                double aspect = this.Image.Size.Width * 1.0 / this.Image.Size.Height;
-                this.Height = this.Image.Size.Height;
-                this.Width = this.Image.Size.Width;
+                this.Height = (int)(this.Image.Size.Width);
+                this.Width = (int)(this.Image.Size.Height);
+                Console.Write(this.Height * zoom + " " + this.Width);
             }
             base.OnPaint(pe);
         }

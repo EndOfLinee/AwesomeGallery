@@ -18,18 +18,19 @@ namespace AwesomeGallery
         public MainView()
         {
             InitializeComponent();
-            selectedImages = new ImageList();            
+            selectedImages = new ImageList();
             listView1.MultiSelect = false;
         }
 
         private void MainView_Load(object sender, EventArgs e)
         {
 
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             listView1.View = View.List;
 
-        
-
+            button1.BackgroundImage = AwesomeGallery.Properties.Resources.left;
+            button1.BackgroundImageLayout = ImageLayout.Center;
+            button2.BackgroundImage = AwesomeGallery.Properties.Resources.right;
+            button2.BackgroundImageLayout = ImageLayout.Center;
         }
 
         public String[] files;
@@ -68,7 +69,7 @@ namespace AwesomeGallery
                 {
                     for (int i = 0; i < files.Count(); i++)
                     {
-                        
+
                         ListViewItem item = new ListViewItem();
                         item.ImageIndex = globalImageIndex;
                         globalImageIndex++;
@@ -78,10 +79,10 @@ namespace AwesomeGallery
                         selectedImages.Images.Add(Image.FromFile(files[i]));
 
                         listView1.BeginUpdate();
-                        listView1.Items.Add(item); 
+                        listView1.Items.Add(item);
                         listView1.EndUpdate();
 
-                    }                
+                    }
                 }
                 pictureBox1.Image = null;
                 if (listView1.Items.Count != 0)
@@ -110,10 +111,10 @@ namespace AwesomeGallery
                 }
             }
             pictureBox1.Image = Image.FromFile(listView1.Items[selectedItemIndex].Tag.ToString());
-           
+
         }
 
-      
+
 
         public void clearGallery()
         {
@@ -144,7 +145,7 @@ namespace AwesomeGallery
 
         }
 
-       
+
         private void saveAsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
@@ -167,14 +168,44 @@ namespace AwesomeGallery
                 listView1.BackColor = cd.Color;
                 panel1.BackColor = cd.Color;
                 tableLayoutPanel1.BackColor = cd.Color;
-               
+
             }
         }
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                Image img = pictureBox1.Image;
+                img.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                pictureBox1.Image = img;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                Image img = pictureBox1.Image;
+                img.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                pictureBox1.Image = img;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            pictureBox1.zoomIn();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            pictureBox1.zoomOut();
+        }
 
 
-    
+
+
+
 
 
     }
