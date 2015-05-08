@@ -31,6 +31,10 @@ namespace AwesomeGallery
             button1.BackgroundImageLayout = ImageLayout.Center;
             button2.BackgroundImage = AwesomeGallery.Properties.Resources.right;
             button2.BackgroundImageLayout = ImageLayout.Center;
+            button3.BackgroundImage = AwesomeGallery.Properties.Resources.zoom_in;
+            button3.BackgroundImageLayout = ImageLayout.Center;
+            button4.BackgroundImage = AwesomeGallery.Properties.Resources.zoom_out;
+            button4.BackgroundImageLayout = ImageLayout.Center;
         }
 
         public String[] files;
@@ -111,6 +115,7 @@ namespace AwesomeGallery
                 }
             }
             pictureBox1.Image = Image.FromFile(listView1.Items[selectedItemIndex].Tag.ToString());
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 
         }
 

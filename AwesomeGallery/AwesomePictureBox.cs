@@ -23,12 +23,25 @@ namespace AwesomeGallery
 
         public void zoomIn()
         {
-            zoom *= 2 ;
+
+            if (this.Image != null)
+            {
+                zoom *= 2;
+                this.Height = (int)(this.Image.Size.Width * zoom);
+                this.Width = (int)(this.Image.Size.Height * zoom);
+            }
+
         }
 
         public void zoomOut()
         {
-            zoom /= 2;
+            if (this.Image != null)
+            {
+                zoom /= 2;
+                this.Height = (int)(this.Image.Size.Width * zoom);
+                this.Width = (int)(this.Image.Size.Height * zoom);
+            }
+
         }
 
 
@@ -36,8 +49,7 @@ namespace AwesomeGallery
         {
             if (this.Image != null)
             {
-                this.Height = (int)(this.Image.Size.Width);
-                this.Width = (int)(this.Image.Size.Height);
+                this.Dock = DockStyle.None;
                 Console.Write(this.Height * zoom + " " + this.Width);
             }
             base.OnPaint(pe);

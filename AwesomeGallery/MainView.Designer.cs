@@ -66,7 +66,7 @@ namespace AwesomeGallery
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(684, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(734, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -154,8 +154,8 @@ namespace AwesomeGallery
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 538F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(684, 538);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 438F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(734, 438);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // listView1
@@ -167,7 +167,7 @@ namespace AwesomeGallery
             this.listView1.MaximumSize = new System.Drawing.Size(105, 0);
             this.listView1.MinimumSize = new System.Drawing.Size(105, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(105, 532);
+            this.listView1.Size = new System.Drawing.Size(105, 432);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
@@ -175,15 +175,17 @@ namespace AwesomeGallery
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(90, 3);
+            this.panel1.Location = new System.Drawing.Point(96, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(591, 532);
+            this.panel1.Size = new System.Drawing.Size(635, 432);
             this.panel1.TabIndex = 1;
             // 
             // panel2
@@ -221,28 +223,26 @@ namespace AwesomeGallery
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(132, 13);
+            this.button3.Location = new System.Drawing.Point(116, 0);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(43, 43);
             this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(246, 12);
+            this.button4.Location = new System.Drawing.Point(165, 0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(43, 43);
             this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(591, 532);
             this.pictureBox1.TabIndex = 0;
@@ -252,7 +252,7 @@ namespace AwesomeGallery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 562);
+            this.ClientSize = new System.Drawing.Size(734, 462);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
