@@ -36,14 +36,13 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearSelectedItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backgroundThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.listView1 = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.pictureBox1 = new AwesomeGallery.AwesomePictureBox();
-            this.backgroundThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -60,7 +59,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(839, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(684, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -119,6 +118,13 @@
             this.clearSelectedItemToolStripMenuItem.Text = "Clear Selected Item";
             this.clearSelectedItemToolStripMenuItem.Click += new System.EventHandler(this.clearSelectedItemToolStripMenuItem_Click);
             // 
+            // backgroundThemeToolStripMenuItem
+            // 
+            this.backgroundThemeToolStripMenuItem.Name = "backgroundThemeToolStripMenuItem";
+            this.backgroundThemeToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.backgroundThemeToolStripMenuItem.Text = "Background theme";
+            this.backgroundThemeToolStripMenuItem.Click += new System.EventHandler(this.backgroundThemeToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
@@ -141,7 +147,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(839, 726);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(684, 538);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // listView1
@@ -150,10 +156,10 @@
             this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.Location = new System.Drawing.Point(3, 3);
-            this.listView1.MaximumSize = new System.Drawing.Size(95, 0);
-            this.listView1.MinimumSize = new System.Drawing.Size(95, 0);
+            this.listView1.MaximumSize = new System.Drawing.Size(105, 0);
+            this.listView1.MinimumSize = new System.Drawing.Size(105, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(95, 720);
+            this.listView1.Size = new System.Drawing.Size(105, 532);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
@@ -163,35 +169,25 @@
             // 
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(110, 3);
+            this.panel1.Location = new System.Drawing.Point(90, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(726, 720);
+            this.panel1.Size = new System.Drawing.Size(591, 532);
             this.panel1.TabIndex = 1;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(726, 720);
+            this.pictureBox1.Size = new System.Drawing.Size(591, 532);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // backgroundThemeToolStripMenuItem
-            // 
-            this.backgroundThemeToolStripMenuItem.Name = "backgroundThemeToolStripMenuItem";
-            this.backgroundThemeToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.backgroundThemeToolStripMenuItem.Text = "Background theme";
-            this.backgroundThemeToolStripMenuItem.Click += new System.EventHandler(this.backgroundThemeToolStripMenuItem_Click);
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(839, 750);
+            this.ClientSize = new System.Drawing.Size(684, 562);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -219,12 +215,12 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearSelectedItemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backgroundThemeToolStripMenuItem;
-        private AwesomePictureBox pictureBox1;
     }
 }
 

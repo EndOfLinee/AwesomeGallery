@@ -18,7 +18,7 @@ namespace AwesomeGallery
         public MainView()
         {
             InitializeComponent();
-            selectedImages = new ImageList();
+            selectedImages = new ImageList();            
             listView1.MultiSelect = false;
         }
 
@@ -55,7 +55,7 @@ namespace AwesomeGallery
                     {
                         pictureBox1.Image = null;
                         listView1.Items[selectedItemIndex].Selected = false;
-                }
+                    }
                 }
 
                 files = openFileDialog1.FileNames;
@@ -81,7 +81,7 @@ namespace AwesomeGallery
                         listView1.Items.Add(item); 
                         listView1.EndUpdate();
 
-                }
+                    }                
                 }
                 pictureBox1.Image = null;
                 if (listView1.Items.Count != 0)
@@ -163,15 +163,15 @@ namespace AwesomeGallery
         {
             ColorDialog cd = new ColorDialog();
             if (cd.ShowDialog() == DialogResult.OK)
-        {
+            {
                 listView1.BackColor = cd.Color;
                 panel1.BackColor = cd.Color;
                 tableLayoutPanel1.BackColor = cd.Color;
-
+               
             }
         }
 
-
+       
 
 
     
