@@ -77,7 +77,7 @@ namespace AwesomeGallery
         private void MainView_Load(object sender, EventArgs e)
         {
 
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
         }
 
 
