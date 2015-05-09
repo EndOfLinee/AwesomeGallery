@@ -114,8 +114,8 @@ namespace AwesomeGallery
                     selectedItemIndex = i;
                 }
             }
-            pictureBox1.Image = Image.FromFile(listView1.Items[selectedItemIndex].Tag.ToString());
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.setImage(Image.FromFile(listView1.Items[selectedItemIndex].Tag.ToString()));
+            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
 
         }
 
@@ -181,9 +181,9 @@ namespace AwesomeGallery
         {
             if (pictureBox1.Image != null)
             {
-                Image img = pictureBox1.Image;
+                Image img = pictureBox1.getSafeSrc();
                 img.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                pictureBox1.Image = img;
+                pictureBox1.setImage(img);
             }
         }
 
@@ -191,9 +191,9 @@ namespace AwesomeGallery
         {
             if (pictureBox1.Image != null)
             {
-                Image img = pictureBox1.Image;
+                Image img = pictureBox1.getSafeSrc();
                 img.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                pictureBox1.Image = img;
+                pictureBox1.setImage(img);
             }
         }
 
@@ -204,8 +204,11 @@ namespace AwesomeGallery
 
         private void button4_Click(object sender, EventArgs e)
         {
+
             pictureBox1.zoomOut();
         }
+
+
 
 
 
