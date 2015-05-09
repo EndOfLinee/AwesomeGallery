@@ -62,7 +62,7 @@ namespace AwesomeGallery
 
             if (this.Image != null)
             {
-                if (this.Height > (int)(safeCopy.Size.Height * zoom) && this.Width > (int)(safeCopy.Size.Width * zoom))
+                if (this.Height > (int)(safeCopy.Size.Height * zoom) || this.Width > (int)(safeCopy.Size.Width * zoom))
                 {
                     zoom *= 1.5;
                     handleZoom();
