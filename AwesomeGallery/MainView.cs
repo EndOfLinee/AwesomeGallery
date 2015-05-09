@@ -170,7 +170,7 @@ namespace AwesomeGallery
             ColorDialog cd = new ColorDialog();
             if (cd.ShowDialog() == DialogResult.OK)
             {
-                listView1.BackColor = cd.Color;
+                //listView1.BackColor = cd.Color;
                 panel1.BackColor = cd.Color;
                 tableLayoutPanel1.BackColor = cd.Color;
 
