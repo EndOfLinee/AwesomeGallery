@@ -35,6 +35,7 @@ namespace AwesomeGallery
             button3.BackgroundImageLayout = ImageLayout.Center;
             button4.BackgroundImage = AwesomeGallery.Properties.Resources.zoom_out;
             button4.BackgroundImageLayout = ImageLayout.Center;
+            buttonsHoverOptions();
         }
 
         public String[] files;
@@ -173,6 +174,7 @@ namespace AwesomeGallery
                 //listView1.BackColor = cd.Color;
                 panel1.BackColor = cd.Color;
                 tableLayoutPanel1.BackColor = cd.Color;
+                pictureBox1.BackColor = cd.Color;
 
             }
         }
@@ -208,7 +210,14 @@ namespace AwesomeGallery
             pictureBox1.zoomOut();
         }
 
-
+        private void buttonsHoverOptions()
+        {
+            ToolTip tip1 = new ToolTip();
+            tip1.SetToolTip(this.button3, "Zoom in the image");
+            tip1.SetToolTip(this.button4, "Zoom out the image");
+            tip1.SetToolTip(this.button2, "Rotate right");
+            tip1.SetToolTip(this.button1, "Rotate left");
+        }
 
 
 
