@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -217,6 +218,20 @@ namespace AwesomeGallery
             tip1.SetToolTip(this.button4, "Zoom out the image");
             tip1.SetToolTip(this.button2, "Rotate right");
             tip1.SetToolTip(this.button1, "Rotate left");
+        }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Drawing.Printing.PrintDocument myPrintDocument = new System.Drawing.Printing.PrintDocument();
+            myPrintDocument.PrintPage += PrintPage;
+            myPrintDocument.Print();
+        }
+
+        private void PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Image img = pictureBox1.getSafeSrc();
+            Point loc = new Point(100, 100);
+            e.Graphics.DrawImage(img,loc);
         }
 
 
