@@ -38,6 +38,7 @@
             this.clearSelectedItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -49,7 +50,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new AwesomeGallery.AwesomePictureBox();
-            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -60,8 +60,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlText;
-            this.menuStrip1.BackgroundImage = global::AwesomeGallery.Properties.Resources.images__1_;
+            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip1.ForeColor = System.Drawing.SystemColors.Control;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -147,6 +146,13 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Print";
             // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.printToolStripMenuItem.Text = "Print...";
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -199,8 +205,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.panel2.BackgroundImage = global::AwesomeGallery.Properties.Resources.images__1_;
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 524);
@@ -212,8 +217,7 @@
             // panel3
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.BackgroundImage = global::AwesomeGallery.Properties.Resources.images__1_;
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.button1);
@@ -272,17 +276,12 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // printToolStripMenuItem
-            // 
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.printToolStripMenuItem.Text = "Print...";
-            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
-            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::AwesomeGallery.Properties.Resources.images__1_;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(684, 562);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.tableLayoutPanel1);
