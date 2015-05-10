@@ -224,14 +224,19 @@ namespace AwesomeGallery
         {
             System.Drawing.Printing.PrintDocument myPrintDocument = new System.Drawing.Printing.PrintDocument();
             myPrintDocument.PrintPage += PrintPage;
+       
             myPrintDocument.Print();
         }
 
         private void PrintPage(object sender, PrintPageEventArgs e)
         {
+          
             Image img = pictureBox1.getSafeSrc();
-            Point loc = new Point(100, 100);
-            e.Graphics.DrawImage(img,loc);
+            if (img != null)
+            {
+                Point loc = new Point(100, 100);
+                e.Graphics.DrawImage(img, loc);
+            }
         }
 
 
